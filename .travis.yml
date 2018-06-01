@@ -1,0 +1,15 @@
+language: python
+
+install:
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  - bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
+  - export PATH="$HOME/miniconda3/bin:$PATH"
+  - conda config --set always_yes yes --set changeps1 no
+  - conda create -n tutorial python=3.6.5 -y
+  - source activate tutorial
+  - git clone https://github.com/AdamStelmaszczyk/rl-tutorial.git
+  - pip install -r requirements.txt
+
+script:
+  - cd rl-tutorial
+  - python run.py --test
