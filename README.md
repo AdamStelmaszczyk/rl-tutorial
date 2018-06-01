@@ -7,8 +7,8 @@ TensorFlow & Keras implementation of DQN.
 
 1. Clone this repo: `git clone https://github.com/AdamStelmaszczyk/rl-tutorial.git`.
 2. [Install `conda`](https://conda.io/docs/user-guide/install/index.html) for dependency management.
-3. Create `rl-tutorial` conda environment: `conda create -n tutorial python=3.6.5 -y`.
-4. Activate `rl-tutorial` conda environment: `source activate tutorial`. All the following commands should be run in the activated `tutorial` environment.
+3. Create `tutorial` conda environment: `conda create -n tutorial python=3.6.5 -y`.
+4. Activate `tutorial` conda environment: `source activate tutorial`. All the following commands should be run in the activated `tutorial` environment.
 5. Install basic dependencies: `pip install -r requirements.txt`.
 
 There is an automatic build on Travis which [does the same](https://github.com/AdamStelmaszczyk/rl-tutorial/blob/master/.travis.yml).
