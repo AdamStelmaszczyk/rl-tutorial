@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/AdamStelmaszczyk/rl-tutorial.svg?branch=master)](https://travis-ci.org/AdamStelmaszczyk/rl-tutorial)
+
+
 TensorFlow & Keras implementation of DQN.
 
 ## Install
