@@ -2,6 +2,7 @@ import random
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from time import strftime, time
 
+import cv2
 import gym
 import numpy as np
 import psutil
@@ -92,12 +93,19 @@ def save_model(model, step, logdir, name):
     return filename
 
 
-def evaluate(env, model, view=False):
+def save_image(env, episode, step):
+    frame = env.render(mode='rgb_array')
+    frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)  # following cv2.imwrite assumes BGR
+    filename = "{}_{:06d}.png".format(episode, step)
+    cv2.imwrite(filename, frame, params=[cv2.IMWRITE_PNG_COMPRESSION, 9])
+
+
+def evaluate(env, model, view=False, images=False):
     print("Evaluation")
     done = True
     episode = 0
     episode_return_sum = 0.0
-    for _ in tqdm(range(1, EVAL_STEPS + 1)):
+    for step in tqdm(range(1, EVAL_STEPS + 1)):
         if done:
             if episode > 0:
                 episode_return_sum += episode_return
@@ -107,6 +115,8 @@ def evaluate(env, model, view=False):
             episode_steps = 0
             if view:
                 env.render()
+            if images:
+                save_image(env, episode, step)
         else:
             obs = next_obs
         action = epsilon_greedy_action(env, model, obs, epsilon=EVAL_EPSILON)
@@ -115,6 +125,8 @@ def evaluate(env, model, view=False):
         episode_steps += 1
         if view:
             env.render()
+        if images:
+            save_image(env, episode, step)
     assert episode > 0
     episode_return_avg = episode_return_sum / episode
     return episode_return_avg
@@ -231,8 +243,8 @@ def main(args):
     env = gym.make('MountainCar-v0')
     set_seed(env, args.seed)
     model = load_or_create_model(env, args.model)
-    if args.view or args.eval:
-        episode_return_avg = evaluate(env, model, args.view)
+    if args.view or args.eval or args.images:
+        episode_return_avg = evaluate(env, model, args.view, args.images)
         print("episode_return_avg {:.3f}".format(episode_return_avg))
     else:
         max_steps = 100 if args.test else MAX_STEPS
@@ -248,6 +260,7 @@ def main(args):
 if __name__ == '__main__':
     parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     parser.add_argument('--eval', action='store_true', default=False, help='run evaluation with log only')
+    parser.add_argument('--images', action='store_true', default=False, help='save images during evaluation')
     parser.add_argument('--model', action='store', default=None, help='model filename to load')
     parser.add_argument('--name', action='store', default=strftime("%m-%d-%H-%M"), help='name for saved files')
     parser.add_argument('--seed', action='store', type=int, help='pseudo random number generator seed')

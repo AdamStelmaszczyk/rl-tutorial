@@ -3,7 +3,7 @@
 
 TensorFlow & Keras implementation of DQN.
 
-<p align="center"><img src="https://github.com/AdamStelmaszczyk/rl-tutorial/blob/master/tensorboard.png"></p>
+<p align="center"><img src="https://github.com/AdamStelmaszczyk/rl-tutorial/blob/master/images/tensorboard.png"></p>
 
 ## Install
 
@@ -26,12 +26,20 @@ usage: run.py [-h] [--eval] [--model MODEL] [--name NAME] [--seed SEED]
 optional arguments:
   -h, --help     show this help message and exit
   --eval         run evaluation with log only (default: False)
+  --images       save images during evaluation (default: False)
   --model MODEL  model filename to load (default: None)
-  --name NAME    name for saved files (default: 06-08-19-23)
+  --name NAME    name for saved files (default: 06-08-21-53)
   --seed SEED    pseudo random number generator seed (default: None)
   --test         run tests (default: False)
   --view         view the model playing the game (default: False)
 ```
+
+## Generate GIFs
+
+1. Generate images: `neptune run --offline -- --images True --model PONG_MODEL.h5 --env Pong`.
+2. We will use `convert` tool, which is part of ImageMagick, [here](https://www.imagemagick.org/script/download.php) are the installation instructions.
+3. Convert images from episode 1 to GIF: `convert -layers optimize-frame 1_*.png 1.gif`
+
 
 ## Uninstall
 
