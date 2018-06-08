@@ -13,6 +13,24 @@ TensorFlow & Keras implementation of DQN.
 
 There is an automatic build on Travis which [does the same](https://github.com/AdamStelmaszczyk/rl-tutorial/blob/master/.travis.yml).
 
+## Run
+
+`python run.py --help`
+
+```
+usage: run.py [-h] [--eval] [--model MODEL] [--name NAME] [--seed SEED]
+              [--test] [--view]
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --eval         run evaluation with log only (default: False)
+  --model MODEL  model filename to load (default: None)
+  --name NAME    name for saved files (default: 06-08-19-23)
+  --seed SEED    pseudo random number generator seed (default: None)
+  --test         run tests (default: False)
+  --view         view the model playing the game (default: False)
+```
+
 ## Uninstall
 
 1. Deactivate conda environment: `source deactivate`.
