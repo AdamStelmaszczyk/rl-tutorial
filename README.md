@@ -3,6 +3,8 @@
 
 TensorFlow & Keras implementation of DQN.
 
+<p align="center"><img src="https://github.com/AdamStelmaszczyk/rl-tutorial/blob/master/tensorboard.png"></p>
+
 ## Install
 
 1. Clone this repo: `git clone https://github.com/AdamStelmaszczyk/rl-tutorial.git`.
