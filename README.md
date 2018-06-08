@@ -38,7 +38,7 @@ optional arguments:
 
 <img src="https://github.com/AdamStelmaszczyk/rl-tutorial/blob/master/images/random.gif">
 
-1. Generate images: `neptune run --offline -- --images True --model PONG_MODEL.h5 --env Pong`.
+1. Generate images: `python run.py --model 06-08-18-42-log/06-08-18-42-200000.h5 --images`.
 2. We will use `convert` tool, which is part of ImageMagick, [here](https://www.imagemagick.org/script/download.php) are the installation instructions.
 3. Convert images from episode 1 to GIF: `convert -layers optimize-frame 1_*.png 1.gif`
 
