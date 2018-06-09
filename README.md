@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/AdamStelmaszczyk/rl-tutorial.svg?branch=master)](https://travis-ci.org/AdamStelmaszczyk/rl-tutorial)
 
-Source code for "Introduction to deep reinforcement learning".  
 Solving Mountain Car environment with TensorFlow & Keras implementation of DQN.  
 For similar code solving some Atari games, look [here](https://github.com/AdamStelmaszczyk/dqn).
 
